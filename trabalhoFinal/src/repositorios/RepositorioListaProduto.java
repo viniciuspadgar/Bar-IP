@@ -16,6 +16,8 @@ public class RepositorioListaProduto implements repositorioProduto {
 		if (this.produto == null) {
 			this.produto = produto;
 			this.next = new RepositorioListaProduto();
+		} else if (this.produto == produto) {
+			//throw Exception produto ja inserido
 		} else {
 			this.next.inserir(produto);
 		}
@@ -34,6 +36,9 @@ public class RepositorioListaProduto implements repositorioProduto {
 	}
 
 	public boolean existe(Produto produto) {
+		
+		
+		
 		return false;
 	}
 

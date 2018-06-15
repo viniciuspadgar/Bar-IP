@@ -1,6 +1,8 @@
 package repositorios;
 import interfaces.repositorioPessoa;
 import classesbasicas.Pessoa;
+import classesbasicas.Cliente;
+import classesbasicas.Funcionario;
 import exceptions.PessoaJaCadastradaException;
 import exceptions.PessoaNaoEncontradaException;
 
@@ -9,8 +11,8 @@ public class RepositorioArrayPessoa implements repositorioPessoa {
 	private int contador;
 
 	public RepositorioArrayPessoa() {
-		pessoas = new Pessoa[100];
-		contador = 0;
+		this.pessoas = new Pessoa[100];
+		this.contador = 0;
 	}
 
 	public void inserir(Pessoa pessoa) throws PessoaJaCadastradaException {
@@ -49,6 +51,7 @@ public class RepositorioArrayPessoa implements repositorioPessoa {
 	}
 
 	public Pessoa procurar(String id) throws PessoaNaoEncontradaException {
+
 		return this.pessoas[this.getIndice(id)];
 	}
 
@@ -61,13 +64,65 @@ public class RepositorioArrayPessoa implements repositorioPessoa {
 		throw new PessoaNaoEncontradaException();
 	}
 
-	
+
 	// escrever o metodo atualizar
-	
-	public void atualizar(Pessoa pessoa, Pessoa pessoaAtualizada) {
-		// TODO Auto-generated method stub
-		
+
+	public void atualizar(Pessoa pessoaAtualizada) {
+
+		int indice = this.getIndice(pessoaAtualizada.getId());
+
+		if(!(pessoaAtualizada.getNome() == null)) {
+
+			this.pessoas[indice].setNome(pessoaAtualizada.getNome());
+
+		}
+
+		if(!(pessoaAtualizada.getIdade() == null)) {
+
+			this.pessoas[indice].setIdade(pessoaAtualizada.getIdade());
+		}
+
+		if(pessoaAtualizada instanceof Cliente) {
+
+			if(!(((Cliente)pessoaAtualizada).getNumeroCartao() == null)) {
+
+				((Cliente)this.pessoas[indice]).setNumeroCartao(((Cliente)pessoaAtualizada).getNumeroCartao());
+
+			}
+
+			if(!(((Cliente)pessoaAtualizada).getMesa() == null)) {
+
+				((Cliente)this.pessoas[indice]).setMesa(((Cliente)pessoaAtualizada).getMesa());
+
+			}
+
+			if(!(((Cliente)pessoaAtualizada).getSaldo() == -1.0)) {			//SETAR!!!!!!!!!!!!!!!!!!!! -1.0!!!!!!!!!!!!!!
+
+				((Cliente)this.pessoas[indice]).setSaldo(((Cliente)pessoaAtualizada).getSaldo());
+
+			}
+
+		} else if(pessoaAtualizada instanceof Funcionario) {
+
+			if(!(((Funcionario)pessoaAtualizada).getEmail() == null)) {
+
+				((Funcionario)this.pessoas[indice]).setEmail(((Funcionario)pessoaAtualizada).getEmail());
+
+			}
+
+			if(!(((Funcionario)pessoaAtualizada).getTelefone() == null)) {
+
+				((Funcionario)this.pessoas[indice]).setTelefone(((Funcionario)pessoaAtualizada).getTelefone());
+
+			}
+
+			if(!(((Funcionario)pessoaAtualizada).getGranaJuntada() == -1.0)) {			//SETAR!!!!!!!!!!!!!!!!!!!! -1.0!!!!!!!!!!!!!!
+
+				((Funcionario)this.pessoas[indice]).setGranaJuntada(((Funcionario)pessoaAtualizada).getGranaJuntada());
+
+			}
+
+		}
+
 	}
-
-
 }

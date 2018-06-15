@@ -6,7 +6,7 @@ import exceptions.NumeroTelefoneInvalidoException;
 public class Funcionario extends Pessoa {
 
 	//Atributos de Funcionarios
-	
+
 	private String email, telefone;
 	private double granaJuntada;
 
@@ -30,14 +30,18 @@ public class Funcionario extends Pessoa {
 		}
 
 	}
-	
-	
+
+
 	//Metodos
-	
+
 	public void receberSalario() {
 		this.granaJuntada += 954.0;
 	}
-	
+
+	public double getGranaJuntada() {
+		return this.granaJuntada;
+	}
+
 	public String getTelefone() {
 		return this.telefone;
 	}
@@ -57,4 +61,29 @@ public class Funcionario extends Pessoa {
 	public Integer getIdade() {
 		return super.getIdade();
 	}
+
+	public void setGranaJuntada(double granaJuntada) {
+		this.granaJuntada = granaJuntada;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+	public void setNome(String nome) {
+		super.setNome(nome);
+	}
+
+	public void setId(String id) {
+		super.setId(id);
+	}
+
+	public void setIdade(Integer idade) {
+		super.setIdade(idade);
+	}
+
 }
